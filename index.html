@@ -1,7 +1,7 @@
 <?php
 // ===== Configuration =====
 $videoFolder = 'videos/'; // Folder path where your videos are stored
-$firstLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d"; // Link shown below each video
+$firstLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d"; // Link below each video
 $redirectLink = "https://www.effectivegatecpm.com/hx4quzxr3?key=1c87be5a59631eccf4bd66ceef254dbf"; // Redirect after countdown
 $minTime = 10; // Minimum redirect seconds
 $maxTime = 20; // Maximum redirect seconds
@@ -15,8 +15,8 @@ $videos = glob($videoFolder . "*.mp4");
 <meta charset="UTF-8">
 <title>Video Landing Page</title>
 <style>
-body { background:#111; color:#fff; font-family:Arial; text-align:center; }
-h1 { padding:20px; }
+body { background:#111; color:#fff; font-family:Arial; text-align:center;}
+h1 { padding:20px;}
 .video-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
 .video-box { width:300px; }
 video { width:100%; border-radius:10px; display:block; }
@@ -40,6 +40,7 @@ a { color:#0ff; text-decoration:none; font-weight:bold; display:block; margin-to
         <video controls autoplay>
             <source src="<?= $video ?>" type="video/mp4">
         </video>
+        <!-- Show your link below each video -->
         <a href="<?= $firstLink ?>" target="_blank"><?= $firstLink ?></a>
     </div>
 <?php endforeach; ?>
@@ -48,26 +49,26 @@ a { color:#0ff; text-decoration:none; font-weight:bold; display:block; margin-to
 <p id="countdown"></p>
 
 <script>
-let secondLink = "<?= $redirectLink ?>";
+// Random redirect time
 let minTime = <?= $minTime ?>;
 let maxTime = <?= $maxTime ?>;
-
-// Random redirect time between minTime and maxTime
 let redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000;
+
+let secondLink = "<?= $redirectLink ?>";
 
 // Countdown display
 let countdown = document.getElementById("countdown");
 let timeLeft = redirectTime / 1000;
-countdown.innerHTML = "Redirecting in "+timeLeft+" seconds...";
+countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
 
 let timer = setInterval(function(){
     timeLeft--;
-    countdown.innerHTML = "Redirecting in "+timeLeft+" seconds...";
+    countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
     if(timeLeft <= 0){
         clearInterval(timer);
         window.location.href = secondLink;
     }
-},1000);
+}, 1000);
 </script>
 
 </body>
