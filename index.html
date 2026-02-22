@@ -1,112 +1,74 @@
+<?php
+// ===== Configuration =====
+$videoFolder = 'videos/'; // Folder path where your videos are stored
+$firstLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d"; // Link shown below each video
+$redirectLink = "https://www.effectivegatecpm.com/hx4quzxr3?key=1c87be5a59631eccf4bd66ceef254dbf"; // Redirect after countdown
+$minTime = 10; // Minimum redirect seconds
+$maxTime = 20; // Maximum redirect seconds
+
+// Get all mp4 files from the folder
+$videos = glob($videoFolder . "*.mp4");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Video Landing Page</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
-            text-align: center;
-        }
-        h1 {
-            padding: 20px;
-        }
-        .video-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            flex-wrap: wrap;
-        }
-        .video-box {
-            width: 300px;
-        }
-        video {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .link-box {
-            margin-top: 30px;
-            font-size: 18px;
-        }
-        a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        #countdown {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #ffcc00;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Video Landing Page</title>
+<style>
+body { background:#111; color:#fff; font-family:Arial; text-align:center; }
+h1 { padding:20px; }
+.video-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+.video-box { width:300px; }
+video { width:100%; border-radius:10px; display:block; }
+a { color:#0ff; text-decoration:none; font-weight:bold; display:block; margin-top:5px; }
+#countdown { margin-top:20px; font-size:16px; color:#ffcc00; }
+</style>
 
-    <!-- 🔹 Popunder Script -->
-    <script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
+<!-- Popunder Script -->
+<script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
 
-    <!-- 🔹 Social Bar Script -->
-    <script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
+<!-- Social Bar Script -->
+<script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
 </head>
 <body>
 
-    <h1>Watch Videos Before Redirect</h1>
+<h1>Watch Videos Before Redirect</h1>
 
-    <!-- Video Gallery -->
-    <div class="video-gallery">
-        <div class="video-box">
-            <video controls autoplay>
-                <source src="https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d" type="video/mp4">
-            </video>
-        </div>
-        <div class="video-box">
-            <video controls autoplay>
-                <source src="https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d" type="video/mp4">
-            </video>
-        </div>
+<div class="video-gallery">
+<?php foreach($videos as $video): ?>
+    <div class="video-box">
+        <video controls autoplay>
+            <source src="<?= $video ?>" type="video/mp4">
+        </video>
+        <a href="<?= $firstLink ?>" target="_blank"><?= $firstLink ?></a>
     </div>
+<?php endforeach; ?>
+</div>
 
-    <!-- Link Box -->
-    <div class="link-box">
-        <p>Visit This Link:</p>
-        <a id="dynamicLink" href="#">Loading...</a>
-        <p id="countdown"></p>
-    </div>
+<p id="countdown"></p>
 
-    <!-- 🔹 Random Redirect Script -->
-    <script>
-        // First link (shown to user)
-        let firstLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d";
+<script>
+let secondLink = "<?= $redirectLink ?>";
+let minTime = <?= $minTime ?>;
+let maxTime = <?= $maxTime ?>;
 
-        // Redirect link (after countdown)
-        let secondLink = "https://www.effectivegatecpm.com/hx4quzxr3?key=1c87be5a59631eccf4bd66ceef254dbf";
+// Random redirect time between minTime and maxTime
+let redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000;
 
-        // Random redirect time between 10-20 seconds
-        let minTime = 10;
-        let maxTime = 20;
-        let redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000;
+// Countdown display
+let countdown = document.getElementById("countdown");
+let timeLeft = redirectTime / 1000;
+countdown.innerHTML = "Redirecting in "+timeLeft+" seconds...";
 
-        // Show first link
-        let linkElement = document.getElementById("dynamicLink");
-        linkElement.href = firstLink;
-        linkElement.innerText = firstLink;
-
-        // Countdown display
-        let countdown = document.getElementById("countdown");
-        let timeLeft = redirectTime / 1000;
-        countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
-
-        let timer = setInterval(function() {
-            timeLeft--;
-            countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
-            if(timeLeft <= 0){
-                clearInterval(timer);
-                window.location.href = secondLink;
-            }
-        }, 1000);
-    </script>
+let timer = setInterval(function(){
+    timeLeft--;
+    countdown.innerHTML = "Redirecting in "+timeLeft+" seconds...";
+    if(timeLeft <= 0){
+        clearInterval(timer);
+        window.location.href = secondLink;
+    }
+},1000);
+</script>
 
 </body>
 </html>
