@@ -1,31 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Auto Redirect Page</title>
+<meta charset="UTF-8">
+<title>Auto Redirect Page</title>
 
-    <!-- Popunder Script -->
-    <script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
+<!-- Popunder Script -->
+<script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
 
-    <!-- Social Bar Script -->
-    <script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
+<!-- Social Bar Script -->
+<script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
 
-    <script>
-        window.onload = function() {
-            // Auto link to open
-            let autoLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d";
+<style>
+body {
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+#message {
+    font-size: 24px;
+}
+</style>
 
-            // Random delay between 10–20 seconds (10000–20000 ms)
-            let minTime = 10000;
-            let maxTime = 20000;
-            let delay = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
+<script>
+window.onload = function() {
+    let autoLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d";
 
-            setTimeout(function() {
-                window.location.href = autoLink;
-            }, delay);
+    // Random delay between 10–20 seconds
+    let minTime = 10000;
+    let maxTime = 20000;
+    let delay = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
+
+    // Countdown display
+    let message = document.getElementById("message");
+    let timeLeft = delay / 1000;
+    message.innerText = "Redirecting in " + Math.ceil(timeLeft) + " seconds...";
+
+    let timer = setInterval(function() {
+        timeLeft--;
+        message.innerText = "Redirecting in " + Math.ceil(timeLeft) + " seconds...";
+        if(timeLeft <= 0){
+            clearInterval(timer);
+            window.location.href = autoLink;
         }
-    </script>
+    }, 1000);
+}
+</script>
 </head>
 <body>
+    <div id="message">Preparing redirect...</div>
 </body>
 </html>
