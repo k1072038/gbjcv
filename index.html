@@ -1,82 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <title>Video Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            text-align: center;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      text-align: center;
-    }
+        h1 {
+            padding: 20px;
+        }
 
-    .box {
-      background: rgba(0,0,0,0.4);
-      padding: 40px;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-    }
+        .video-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
 
-    h1 {
-      margin-bottom: 10px;
-    }
+        .video-box {
+            width: 300px;
+        }
 
-    .count {
-      font-size: 40px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: white;
-      color: #333;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-  </style>
+        .link-box {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #countdown {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #ffcc00;
+        }
+    </style>
+
+    <!-- 🔥 Popunder Ad Script Placeholder -->
+    <script>
+<script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
+        // (function(){ var p=document.createElement('script'); p.src='YOUR_POPUNDER_SCRIPT_URL'; document.body.appendChild(p);})();
+    </script>
 </head>
-
 <body>
 
-  <div class="box">
-    <h1>Redirecting...</h1>
-    <p>You will be redirected in</p>
-    <div class="count" id="count"></div>
-    <a class="btn" href="https://valuedcowboysample.com/sbzi96ctk?key=43adf0acb7d359719c81c72ba1120619">Click Here If Not Redirected</a>
-  </div>
+    <h1>Welcome To My Landing Page</h1>
 
-  <script>
-    // 1–5 second random time
-    var seconds = Math.floor(Math.random() * 5) + 1;
-    var countElement = document.getElementById("count");
-    countElement.textContent = seconds;
+    <!-- Video Gallery -->
+    <div class="video-gallery">
+        <div class="video-box">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-box">
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
-    var interval = setInterval(function() {
-      seconds--;
-      countElement.textContent = seconds;
+    <!-- Link Box -->
+    <div class="link-box">
+        <p>Visit This Link:</p>
+        <a id="dynamicLink" href="#">Loading...</a>
+        <p id="countdown"></p>
+    </div>
 
-      if (seconds <= 0) {
-        clearInterval(interval);
-        window.location.href = "https://valuedcowboysample.com/sbzi96ctk?key=43adf0acb7d359719c81c72ba1120619"; // apnar link din
-      }
-    }, 1000);
-  </script>
+    <!-- Scripts -->
+    <script>
+        // 🔹 Your Links
+        let firstLink = "https://valuedcowboysample.com/sbzi96ctk?key=43adf0acb7d359719c81c72ba1120619";   // First link shown
+        let secondLink = "https://www.effectivegatecpm.com/hx4quzxr3?key=1c87be5a59631eccf4bd66ceef254dbf";  // Redirect link
+
+        // 🔹 Random redirect time between 10-20 seconds
+        let minTime = 10;
+        let maxTime = 20;
+        let redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000; // in ms
+
+        // 🔹 Show first link
+        let linkElement = document.getElementById("dynamicLink");
+        linkElement.href = firstLink;
+        linkElement.innerText = firstLink;
+
+        // 🔹 Countdown Timer
+        let countdown = document.getElementById("countdown");
+        let timeLeft = redirectTime / 1000;
+        countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
+
+        let timer = setInterval(function() {
+            timeLeft--;
+            countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
+            if(timeLeft <= 0){
+                clearInterval(timer);
+                window.location.href = secondLink;
+            }
+        }, 1000);
+    </script>
+
+    <!-- 🔥 Social Bar Ad Script Placeholder -->
+    <script>
+       <script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
+        // (function(){ var s=document.createElement('script'); s.src='YOUR_SOCIAL_BAR_SCRIPT_URL'; document.body.appendChild(s);})();
+    </script>
 
 </body>
 </html>
-
-<script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
-
-<script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
