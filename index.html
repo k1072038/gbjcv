@@ -1,75 +1,31 @@
-<?php
-// ===== Configuration =====
-$videoFolder = 'videos/'; // Folder path where your videos are stored
-$firstLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d"; // Link below each video
-$redirectLink = "https://www.effectivegatecpm.com/hx4quzxr3?key=1c87be5a59631eccf4bd66ceef254dbf"; // Redirect after countdown
-$minTime = 10; // Minimum redirect seconds
-$maxTime = 30; // Maximum redirect seconds
-
-// Get all mp4 files from the folder
-$videos = glob($videoFolder . "*.mp4");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Video Landing Page</title>
-<style>
-body { background:#111; color:#fff; font-family:Arial; text-align:center;}
-h1 { padding:20px;}
-.video-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
-.video-box { width:300px; }
-video { width:100%; border-radius:10px; display:block; }
-a { color:#0ff; text-decoration:none; font-weight:bold; display:block; margin-top:5px; }
-#countdown { margin-top:20px; font-size:16px; color:#ffcc00; }
-</style>
+    <meta charset="UTF-8">
+    <title>Auto Redirect Page</title>
 
-<!-- Popunder Script -->
-<script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
+    <!-- Popunder Script -->
+    <script src="https://valuedcowboysample.com/83/e4/f7/83e4f70eeca6bd61332a00f5ca9ad031.js"></script>
 
-<!-- Social Bar Script -->
-<script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
+    <!-- Social Bar Script -->
+    <script src="https://valuedcowboysample.com/74/16/68/741668444a39566e20e928d5e63b9dbd.js"></script>
+
+    <script>
+        window.onload = function() {
+            // Auto link to open
+            let autoLink = "https://valuedcowboysample.com/jjdxp3bivb?key=636a9d91b4a0498c57daae92fb30098d";
+
+            // Random delay between 10–20 seconds (10000–20000 ms)
+            let minTime = 10000;
+            let maxTime = 20000;
+            let delay = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
+
+            setTimeout(function() {
+                window.location.href = autoLink;
+            }, delay);
+        }
+    </script>
 </head>
 <body>
-
-<h1>Watch Videos Before Redirect</h1>
-
-<div class="video-gallery">
-<?php foreach($videos as $video): ?>
-    <div class="video-box">
-        <video controls autoplay>
-            <source src="<?= $video ?>" type="video/mp4">
-        </video>
-        <!-- Show your link below each video -->
-        <a href="<?= $firstLink ?>" target="_blank"><?= $firstLink ?></a>
-    </div>
-<?php endforeach; ?>
-</div>
-
-<p id="countdown"></p>
-
-<script>
-// Random redirect time
-let minTime = <?= $minTime ?>;
-let maxTime = <?= $maxTime ?>;
-let redirectTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000;
-
-let secondLink = "<?= $redirectLink ?>";
-
-// Countdown display
-let countdown = document.getElementById("countdown");
-let timeLeft = redirectTime / 1000;
-countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
-
-let timer = setInterval(function(){
-    timeLeft--;
-    countdown.innerHTML = "Redirecting in " + timeLeft + " seconds...";
-    if(timeLeft <= 0){
-        clearInterval(timer);
-        window.location.href = secondLink;
-    }
-}, 1000);
-</script>
-
 </body>
 </html>
